@@ -45,6 +45,7 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
+  p->countcall = 0;//define counter variable for read id
   release(&ptable.lock);
 
   // Allocate kernel stack if possible.

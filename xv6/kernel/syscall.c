@@ -111,11 +111,17 @@ void
 syscall(void)
 {
   int num;
-  
+  struct proc *proc = fcproc();//process call
+
   num = proc->tf->eax;
-  if(num > 0 && num < NELEM(syscalls) && syscalls[num] != NULL) {
-    proc->tf->eax = syscalls[num]();
-  } else {
+  if(num==SYS_read) {
+    proc->countcall = proc->countcall++;//if the integer is defined as read, increment integer by one
+  } 
+  if()
+  {
+  	//if statement to store syscalls[num] in tf->eax???Idk
+  }
+  else {
     cprintf("%d %s: unknown sys call %d\n",
             proc->pid, proc->name, num);
     proc->tf->eax = -1;

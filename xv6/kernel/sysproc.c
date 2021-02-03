@@ -88,3 +88,8 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+int getreadcount(void)
+{
+	return fcproc()->countcall;
+}
